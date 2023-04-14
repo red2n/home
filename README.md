@@ -39,11 +39,18 @@ The system's objective evaluation eliminates any biases that may exist in the fa
 ### Accurate Salary Determination: 
 The system uses objective data analysis to determine a candidate's salary, ensuring that it is fair and consistent with industry standards.
 
+## Application Overview
+We will be using JAVA for the API part, PostgreSQL for the data base and UI will be in latest Angular framework (Tailwind[^1] CSS as CSS framework). also here are some references that i will be using to build this application and the techniques that will be involved in developing this application.
+1. Spring Cloud Gateway[^2].
+2. Microservices with Spring Boot[^3].
+3. Kafka (in possible areas)[^3].
+4. UI Angular[^4]
 
+you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
 
-[^1]: My reference.
-[^2]: Spring Cloud Gateway.  
-  This allows you to have a footnote with multiple lines.
+[^1]: Primary CSS Library is [Tamilwind](https://tailwindcss.com/).  
+[^2]: Spring Cloud Gateway: Resilience, Security, and Observability w/ [Thomas Vitale](https://www.youtube.com/watch?v=UXcCHX_ymag).
+[^3]: if possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo)
+[^4]: i highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class)
 [^note]:
-    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.  
-    This footnote also has been made with a different syntax using 4 spaces for new lines.
+     I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
