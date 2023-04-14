@@ -63,7 +63,9 @@ UI/APP
 4. Canditate Home App.
 5. Reports App.
 
-Task Lists
+## Application Flow
+
+### Task Lists
 - [x] Creating Git Report and adding README.
 - [ ] Linking [Flow Diagram](https://www.mermaidchart.com/). [^6]
      - [ ] Creating the `System Design`.
@@ -84,7 +86,8 @@ Task Lists
      - [ ] implement logging ability in the database.
 
 
-Sample system flow (Admin app)
+### Sample system flow (Admin app)
+
 ```mermaid
 flowchart TD
     A[Admin] -->B(Access Request)
@@ -94,7 +97,7 @@ flowchart TD
     C -->|Type 3| F[fa:fa-file-excel Reports]
 ```
 
-REFERENCS
+## REFERENCS
 1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
 2. [Grammar index](https://github.com/github/linguist/blob/master/vendor/README.md)
 3. [Flow diagram fonts](https://fontawesome.com/v4/icons/)
