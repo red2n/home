@@ -38,3 +38,12 @@ The system's objective evaluation eliminates any biases that may exist in the fa
 
 ### Accurate Salary Determination: 
 The system uses objective data analysis to determine a candidate's salary, ensuring that it is fair and consistent with industry standards.
+
+
+
+[^1]: My reference.
+[^2]: Spring Cloud Gateway.  
+  This allows you to have a footnote with multiple lines.
+[^note]:
+    Named footnotes will still render with numbers instead of the text but allow easier identification and linking.  
+    This footnote also has been made with a different syntax using 4 spaces for new lines.
