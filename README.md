@@ -63,6 +63,24 @@ UI/APP
 4. Canditate Home Page.
 5. Reports Page.
 
+Task Lists
+- [X] Creating Git Report and adding README.
+- [ ] Linking [diagrams](https://app.diagrams.net/).
+     - [ ] Creating the `System Design`.
+          - [ ] overview of the system
+          - [ ] control flow overview
+          
+- [ ] Get the pre-requsits done
+     - [ ] Install PostgreSQL in the local machine and configure the DB.
+     - [ ] Create the necessary tables.
+     - [ ] Create the necessary View.
+     - [ ] load the tables with sample data.
+     - [ ] implement logging ability in the database.
+
+
+REFERENCS
+1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
+
 you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
 
 [^1]: Primary CSS Library is [Tamilwind](https://tailwindcss.com/).  
