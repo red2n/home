@@ -65,7 +65,7 @@ UI/APP
 
 Task Lists
 - [x] Creating Git Report and adding README.
-- [ ] Linking [Flow Diagram](https://www.mermaidchart.com/).
+- [ ] Linking[^6]  [Flow Diagram](https://www.mermaidchart.com/).
      - [ ] Creating the `System Design`.
           - [ ] overview of the system
           - [ ] control flow overview
@@ -78,7 +78,7 @@ Task Lists
      - [ ] implement logging ability in the database.
 
 
-Sample system flow[^6] (Admin app)
+Sample system flow (Admin app)
 ```mermaid
 flowchart TD
     A[Admin] -->B(Access Request)
