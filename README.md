@@ -100,71 +100,171 @@ flowchart TD
 ### SQL Table Diagram
 
 ```mermaid
+erDiagram
+
+TEST_TYPE ||--o{ TEST_LOOKUP : TYP_ID
+TEST_TYPE{
+      Int id
+      String DESCRIPTION
+      Int POINTS
+      DateTime UPDATED_DATE_TIME
+    }
+TEST_LOOKUP ||--o{ QUESTIONS : TEST_LOOKUP_ID
+ TEST_LOOKUP{
+        int id
+        String DESCRIPTION
+        int TYP_ID
+        dateFormat UPDATED_DATE_TIME
+    }
+QUESTIONS_LOOKUP ||--o{ QUESTIONS : ID_LOOKUP
+QUESTIONS_LOOKUP{
+        int id
+        String DESCRIPTIO
+        int Time
+        Int POINTS
+        dateFormat UPDATED_DATE_TIME
+    }
+QUESTIONS ||--o{ ANSWERS : Q_ID
+ QUESTIONS{
+        int id
+        String QUESTION
+        String OPTIONS
+        String ANSWER
+        int ID_LOOKUP
+        int TEST_LOOKUP_ID
+        dateFormat UPDATED_DATE_TIME
+    }
+
+
+USR_WORK_PROFILE ||--o{ Users : USR_ID
+USR_WORK_PROFILE{
+     int id
+    int C_ID
+    Boolean ISPRODUCT_BASED
+    dateFormat DURATION_FROM
+    dateFormat DURATION_TO
+    int CURRENT_CTC
+    int EXPECTED_CTC
+    dateFormat UPDATED_DATE_TIME
+    int USR_ID
+}
+COMPANY_PROFILE  ||--o{ USR_WORK_PROFILE : C_ID
+COMPANY_PROFILE{
+     int id
+    String COMPANY_NAME 
+    Boolean ISPRODUCT_BASED
+    dateFormat UPDATED_DATE_TIME
+}
+
+
+USERSTATUS ||--o{ Users : USER_STATUS
+USERSTATUS{
+    int id
+    String DESCRIPTION 
+    dateFormat UPDATED_DATE_TIME
+}
+ROLES ||--o{ Users : ROLE_ID
+    ROLES{ 
+    int id
+    String DESCRIPTION
+    String SHORT_DESC
+    dateFormat UPDATED_DATE_TIME
+}
+
+Users ||--o{ ANSWERS : USR_ID
+Users {
+    int id
+    string FIRST_NAME
+    string LAST_NAME
+    int ROLE_ID
+    string EMAIL
+    string PHONE
+    int USER_STATUS
+    string USR_PASS
+    DateTime UPDATED_DATE_TIME
+}
+
+ANSWERS {
+    int id
+    int Q_ID
+    int USR_ID
+    boolean ISTAKEN
+    string ANSR
+    datetime UPDATED_DATE_TIME
+}
+
+```
+
+### Class Diagram
+```mermaid
 classDiagram
 
     class Users{
-        -Int id
-        -String FIRST_NAME
-        -String LAST_NAME
-        -Int ROLE_ID
-        -String EMAIL
-        -String PHONE
-        -Int USER_STATUS
-        -String USR_PASS
-        -DateTime UPDATED_DATE_TIME
+        Int id
+        String FIRST_NAME
+        String LAST_NAME
+        Int ROLE_ID
+        String EMAIL
+        String PHONE
+        Int USER_STATUS
+        String USR_PASS
+        DateTime UPDATED_DATE_TIME
     }
     class TEST_LOOKUP{
-        -int id
-        -String DESCRIPTION
-        -int TYP_ID
-        -dateFormat UPDATED_DATE_TIME
+        int id
+        String DESCRIPTION
+        int TYP_ID
+        dateFormat UPDATED_DATE_TIME
     }
     class TEST_TYPE{
-      -Int id
-      -String DESCRIPTION
-      -Int POINTS
-      -DateTime UPDATED_DATE_TIME
+      Int id
+      String DESCRIPTION
+      Int POINTS
+      DateTime UPDATED_DATE_TIME
     }
     class QUESTIONS_LOOKUP{
-        -int id
-        -String DESCRIPTIO
-        -int Time
-        -Int POINTS
-        -dateFormat UPDATED_DATE_TIME
+        int id
+        String DESCRIPTIO
+        int Time
+        Int POINTS
+        dateFormat UPDATED_DATE_TIME
     }
+
     class QUESTIONS{
-        -int id
-        -String DESCRIPTION
-        -int Time
-        -Int POINTS
-        -dateFormat UPDATED_DATE_TIME
+        int id
+        String QUESTION
+        String OPTIONS
+        String ANSWER
+        int ID_LOOKUP
+        int TEST_LOOKUP_ID
+        dateFormat UPDATED_DATE_TIME
     }
     class ANSWERS{
-        -Int id
-        -Int Q_ID
-        -Int USR_ID
-        -Boolean ISTAKEN
-        -String ANSR
-        -DateTime UPDATED_DATE_TIME
+        Int id
+        Int Q_ID
+        Int USR_ID
+        Boolean ISTAKEN
+        String ANSR
+        DateTime UPDATED_DATE_TIME
     }
 class ROLES{
-    -int id
-    -String DESCRIPTION
-    -String SHORT_DESC
-    -dateFormat UPDATED_DATE_TIME
+    int id
+    String DESCRIPTION
+    String SHORT_DESC
+    dateFormat UPDATED_DATE_TIME
 }
 
 class USERSTATUS{
-    -int id
-    -String DESCRIPTION 
-    -dateFormat UPDATED_DATE_TIME
+    int id
+    String DESCRIPTION 
+    dateFormat UPDATED_DATE_TIME
 }
 
 class COMPANY_PROFILE{
-     -int id
-    -String COMPANY_NAME 
-    -Boolean ISPRODUCT_BASED
-    -dateFormat UPDATED_DATE_TIME
+    int id
+    String COMPANY_NAME 
+    Boolean ISPRODUCT_BASED
+    dateFormat UPDATED_DATE_TIME
 }
 
 class USR_WORK_PROFILE{
@@ -189,9 +289,6 @@ TEST_TYPE "1" --> "1..*" TEST_LOOKUP :TYP_ID
 COMPANY_PROFILE "1" --> "1..*"  USR_WORK_PROFILE :C_ID
 USR_WORK_PROFILE "1" --> "1..*" Users :USR_ID
 ```
-
-### Class Diagram
-
 
 ## REFERENCS
 1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
