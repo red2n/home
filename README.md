@@ -101,6 +101,6 @@ you will see more and more changes in this application in comming months or may 
 [^3]: If possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo)
 [^4]: I highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class)
 [^5]: This might change or will be implemented in some other end point if it makes sense.
-[^6] i am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project.
+[^6]: i am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project.
 [^note]:
      I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
