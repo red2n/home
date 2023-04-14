@@ -65,7 +65,7 @@ UI/APP
 
 Task Lists
 - [x] Creating Git Report and adding README.
-- [ ] Linking[^6]  [Flow Diagram](https://www.mermaidchart.com/).
+- [ ] Linking [Flow Diagram](https://www.mermaidchart.com/). [^6]
      - [ ] Creating the `System Design`.
           - [ ] overview of the system
           - [ ] control flow overview
