@@ -98,6 +98,7 @@ REFERENCS
 1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
 2. [Grammar index](https://github.com/github/linguist/blob/master/vendor/README.md)
 3. [Flow diagram fonts](https://fontawesome.com/v4/icons/)
+4. for Writing mathematical expressions will be using [mathjax](https://www.mathjax.org/)
 
 
 you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
@@ -109,7 +110,5 @@ you will see more and more changes in this application in comming months or may 
 [^5]: This might change or will be implemented in some other end point if it makes sense.
 [^6]: I am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project. also there is a 
 [USAGE LINK](https://mermaid.live/edit#pako:eNplj70KwzAMhF9FaM5SShevLXTKlDWLiEXitraCIxNCyLvXzQ-0VJO573Qnz9iIZTT4kBQDT3WAPOr0xVBOMEp8utCCpZ0M3KiTAHcBlRVvOkBJTwZlMnAxUPIhZ2PqByUXBwPnb3Lb9g2cPmoBV9K_jk78d5KVMRxZPy2V0xXuFVig5-jJ2fyz-WOqUTvOWWjy01I-G-uwZB8llWoKDRqNiQtMvSXlm6M2kt_E5Q2_KVsO) that shows how to use code this and use it in [github](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams).
-[^7]: for Writing mathematical expressions will be using [mathjax](https://www.mathjax.org/)
-
 [^note]:
      I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
