@@ -52,7 +52,7 @@ API endpoint.
 1. Users/Roles
 2. Questions
 3. Answers
-4. Company Profile[^6]
+4. Company Profile[^5]
 5. Canditate Profile.
 6. Report
 
