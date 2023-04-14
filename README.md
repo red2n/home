@@ -97,6 +97,100 @@ flowchart TD
     C -->|Type 3| F[fa:fa-file-excel Reports]
 ```
 
+### Class/Table Diagram
+
+```mermaid
+classDiagram
+
+    class Users{
+        -Int id
+        -String FIRST_NAME
+        -String LAST_NAME
+        -Int ROLE_ID
+        -String EMAIL
+        -String PHONE
+        -Int USER_STATUS
+        -String USR_PASS
+        -DateTime UPDATED_DATE_TIME
+    }
+    class TEST_LOOKUP{
+        -int id
+        -String DESCRIPTION
+        -int TYP_ID
+        -dateFormat UPDATED_DATE_TIME
+    }
+    class TEST_TYPE{
+      -Int id
+      -String DESCRIPTION
+      -Int POINTS
+      -DateTime UPDATED_DATE_TIME
+    }
+    class QUESTIONS_LOOKUP{
+        -int id
+        -String DESCRIPTIO
+        -int Time
+        -Int POINTS
+        -dateFormat UPDATED_DATE_TIME
+    }
+    class QUESTIONS{
+        -int id
+        -String DESCRIPTION
+        -int Time
+        -Int POINTS
+        -dateFormat UPDATED_DATE_TIME
+    }
+    class ANSWERS{
+        -Int id
+        -Int Q_ID
+        -Int USR_ID
+        -Boolean ISTAKEN
+        -String ANSR
+        -DateTime UPDATED_DATE_TIME
+    }
+class ROLES{
+    -int id
+    -String DESCRIPTION
+    -String SHORT_DESC
+    -dateFormat UPDATED_DATE_TIME
+}
+
+class USERSTATUS{
+    -int id
+    -String DESCRIPTION 
+    -dateFormat UPDATED_DATE_TIME
+}
+
+class COMPANY_PROFILE{
+     -int id
+    -String COMPANY_NAME 
+    -Boolean ISPRODUCT_BASED
+    -dateFormat UPDATED_DATE_TIME
+}
+
+class USR_WORK_PROFILE{
+     -int id
+    -int C_ID
+    -Boolean ISPRODUCT_BASED
+    -dateFormat DURATION_FROM
+    -dateFormat DURATION_TO
+    -int CURRENT_CTC
+    -int EXPECTED_CTC
+    -dateFormat UPDATED_DATE_TIME
+    -int USR_ID
+}
+
+    Users <|-- ANSWERS
+    Users <|-- ROLES
+    Users <|-- USERSTATUS
+    QUESTIONS <|-- QUESTIONS_LOOKUP
+    ANSWERS <|-- QUESTIONS
+    QUESTIONS <|-- TEST_TYPE
+    TEST_LOOKUP <|-- TEST_TYPE
+    USR_WORK_PROFILE <|-- COMPANY_PROFILE
+    Users <|-- USR_WORK_PROFILE
+```
+
+
 ## REFERENCS
 1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
 2. [Grammar index](https://github.com/github/linguist/blob/master/vendor/README.md)
