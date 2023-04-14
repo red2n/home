@@ -65,7 +65,7 @@ UI/APP
 
 Task Lists
 - [x] Creating Git Report and adding README.
-- [ ] Linking [diagrams](https://app.diagrams.net/).
+- [ ] Linking [Flow Diagram](https://www.mermaidchart.com/).
      - [ ] Creating the `System Design`.
           - [ ] overview of the system
           - [ ] control flow overview
@@ -77,6 +77,16 @@ Task Lists
      - [ ] load the tables with sample data.
      - [ ] implement logging ability in the database.
 
+
+Sample system flow (Admin app)
+```mermaid
+flowchart TD
+    A[Admin] -->B(Access Request)
+    B --> C{check for valid user}
+    C -->|Type 1| D[fa:fa-user Internal User]
+    C -->|Type 2| E[fa:fa-users Canditate]
+    C -->|Type 3| F[fa:fa-file-excel Reports]
+```
 
 REFERENCS
 1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
