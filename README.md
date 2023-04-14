@@ -64,7 +64,7 @@ UI/APP
 5. Reports Page.
 
 Task Lists
-- [X] Creating Git Report and adding README.
+- [x] Creating Git Report and adding README.
 - [ ] Linking [diagrams](https://app.diagrams.net/).
      - [ ] Creating the `System Design`.
           - [ ] overview of the system
