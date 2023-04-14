@@ -96,11 +96,12 @@ REFERENCS
 
 you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
 
-[^1]: Primary CSS Library is [Tamilwind](https://tailwindcss.com/).  
+[^1]: Primary CSS Library is [Tamilwind](https://tailwindcss.com/).
 [^2]: Spring Cloud Gateway: Resilience, Security, and Observability w/ [Thomas Vitale](https://www.youtube.com/watch?v=UXcCHX_ymag).
-[^3]: If possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo)
-[^4]: I highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class)
+[^3]: If possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo);
+[^4]: I highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class).
 [^5]: This might change or will be implemented in some other end point if it makes sense.
-[^6]: i am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project.
+[^6]: i am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project. also there is a [elebrate link] (https://mermaid.live/edit#pako:eNplj70KwzAMhF9FaM5SShevLXTKlDWLiEXitraCIxNCyLvXzQ-0VJO573Qnz9iIZTT4kBQDT3WAPOr0xVBOMEp8utCCpZ0M3KiTAHcBlRVvOkBJTwZlMnAxUPIhZ2PqByUXBwPnb3Lb9g2cPmoBV9K_jk78d5KVMRxZPy2V0xXuFVig5-jJ2fyz-WOqUTvOWWjy01I-G-uwZB8llWoKDRqNiQtMvSXlm6M2kt_E5Q2_KVsO) that shows how to use code this and use it in [github](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams).
+
 [^note]:
      I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
