@@ -78,7 +78,7 @@ Task Lists
      - [ ] implement logging ability in the database.
 
 
-Sample system flow (Admin app)[^6]
+Sample system flow[^6] (Admin app)
 ```mermaid
 flowchart TD
     A[Admin] -->B(Access Request)
