@@ -57,11 +57,11 @@ API endpoint.
 6. Report
 
 UI/APP
-1. Home/Welcome Page.
-2. Admin Page
-3. Internal user Page.
-4. Canditate Home Page.
-5. Reports Page.
+1. Home/Welcome App.
+2. Admin App.
+3. Internal user App.
+4. Canditate Home App.
+5. Reports App.
 
 Task Lists
 - [x] Creating Git Report and adding README.
@@ -69,6 +69,12 @@ Task Lists
      - [ ] Creating the `System Design`.
           - [ ] overview of the system
           - [ ] control flow overview
+               - [ ] App System Design
+                    - [ ] Home
+                    - [x] Admin
+                    - [ ] Internal User 
+                    - [ ] Canditate User
+                    - [ ] Report App
           
 - [ ] Get the pre-requsits done
      - [ ] Install PostgreSQL in the local machine and configure the DB.
