@@ -46,11 +46,29 @@ We will be using JAVA for the API part, PostgreSQL for the data base and UI will
 3. Kafka (in possible areas)[^3].
 4. UI Angular[^4]
 
+This application will be having only one end point based on spring colud gateway. and we will be having a multiple microservices based on the need. also the will have multiple apps for each users. here is the highlevel overview of the application that will make you understand under the hood.
+
+API endpoint.
+1. Users/Roles
+2. Questions
+3. Answers
+4. Company Profile[^5]
+5. Canditate Profile.
+6. Report
+
+UI/APP
+1. Home/Welcome Page.
+2. Admin Page
+3. Internal user Page.
+4. Canditate Home Page.
+5. Reports Page.
+
 you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
 
 [^1]: Primary CSS Library is [Tamilwind](https://tailwindcss.com/).  
 [^2]: Spring Cloud Gateway: Resilience, Security, and Observability w/ [Thomas Vitale](https://www.youtube.com/watch?v=UXcCHX_ymag).
-[^3]: if possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo)
-[^4]: i highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class)
+[^3]: If possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo)
+[^4]: I highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class)
+[^5]: This might change or will be implemented in some other end point if it makes sense.
 [^note]:
      I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
