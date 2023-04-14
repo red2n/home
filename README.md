@@ -104,94 +104,95 @@ erDiagram
 
 TEST_TYPE ||--o{ TEST_LOOKUP : TYP_ID
 TEST_TYPE{
-      Int id
-      String DESCRIPTION
-      Int POINTS
-      DateTime UPDATED_DATE_TIME
+      SERIAL ID 
+      TEXT DESCRIPTION
+      INT POINTS
+      TIMESTAMP UPDATED_DATE_TIME
     }
 TEST_LOOKUP ||--o{ QUESTIONS : TEST_LOOKUP_ID
  TEST_LOOKUP{
-        int id
-        String DESCRIPTION
-        int TYP_ID
-        dateFormat UPDATED_DATE_TIME
+        SERIAL ID 
+        VARCHAR TITLE
+        TEXT DESCRIPTION
+        INT TYP_ID
+        TIMESTAMP UPDATED_DATE_TIME
     }
 QUESTIONS_LOOKUP ||--o{ QUESTIONS : ID_LOOKUP
 QUESTIONS_LOOKUP{
-        int id
-        String DESCRIPTIO
-        int Time
-        Int POINTS
-        dateFormat UPDATED_DATE_TIME
+        SERIAL id
+        VARCHAR DESCRIPTIO
+        INT Time
+        INT POINTS
+        TIMESTAMP UPDATED_DATE_TIME
     }
 QUESTIONS ||--o{ ANSWERS : Q_ID
  QUESTIONS{
-        int id
-        String QUESTION
-        String OPTIONS
-        String ANSWER
-        int ID_LOOKUP
-        int TEST_LOOKUP_ID
-        dateFormat UPDATED_DATE_TIME
+        SERIAL id
+        TEXT QUESTION
+        TEXT OPTIONS
+        TEXT ANSWER
+        INT ID_LOOKUP
+        INT TEST_LOOKUP_ID
+        TIMESTAMP UPDATED_DATE_TIME
     }
 
 
 USR_WORK_PROFILE ||--o{ Users : USR_ID
 USR_WORK_PROFILE{
-     int id
-    int C_ID
-    Boolean ISPRODUCT_BASED
-    dateFormat DURATION_FROM
-    dateFormat DURATION_TO
-    int CURRENT_CTC
-    int EXPECTED_CTC
-    dateFormat UPDATED_DATE_TIME
-    int USR_ID
+     SERIAL id
+    INT C_ID
+    DATE DURATION_FROM
+    DATE DURATION_TO
+    INT CURRENT_CTC
+    INT EXPECTED_CTC
+    TIMESTAMP UPDATED_DATE_TIME
+    INT USR_ID
 }
 COMPANY_PROFILE  ||--o{ USR_WORK_PROFILE : C_ID
 COMPANY_PROFILE{
-     int id
-    String COMPANY_NAME 
-    Boolean ISPRODUCT_BASED
-    dateFormat UPDATED_DATE_TIME
+     SERIAL id
+    TEXT COMPANY_NAME 
+    BOOLEAN ISPRODUCT_BASED
+    TIMESTAMP UPDATED_DATE_TIME
 }
 
 
 USERSTATUS ||--o{ Users : USER_STATUS
 USERSTATUS{
-    int id
-    String DESCRIPTION 
-    dateFormat UPDATED_DATE_TIME
+    SERIAL id
+    VARCHAR DESCRIPTION 
+    TIMESTAMP UPDATED_DATE_TIME
 }
 ROLES ||--o{ Users : ROLE_ID
     ROLES{ 
-    int id
-    String DESCRIPTION
-    String SHORT_DESC
-    dateFormat UPDATED_DATE_TIME
+    SERIAL id
+    VARCHAR DESCRIPTION
+    VARCHAR SHORT_DESC
+    TIMESTAMP UPDATED_DATE_TIME
 }
 
 Users ||--o{ ANSWERS : USR_ID
 Users {
-    int id
-    string FIRST_NAME
-    string LAST_NAME
-    int ROLE_ID
-    string EMAIL
-    string PHONE
-    int USER_STATUS
-    string USR_PASS
-    DateTime UPDATED_DATE_TIME
+    SERIAL id
+    VARCHAR FIRST_NAME
+    VARCHAR LAST_NAME
+    INT ROLE_ID
+    VARCHAR EMAIL
+    VARCHAR PHONE
+    INT USER_STATUS
+    TEXT USR_PASS
+    TIMESTAMP UPDATED_DATE_TIME
 }
 
 ANSWERS {
-    int id
-    int Q_ID
-    int USR_ID
-    boolean ISTAKEN
-    string ANSR
-    datetime UPDATED_DATE_TIME
+    SERIAL id
+    INT Q_ID
+    INT USR_ID
+    BOOLEAN ISTAKEN
+    TEXT ANSR
+    TIMESTAMP UPDATED_DATE_TIME
 }
+
 
 ```
 
@@ -200,83 +201,84 @@ ANSWERS {
 classDiagram
 
     class Users{
-        Int id
-        String FIRST_NAME
-        String LAST_NAME
-        Int ROLE_ID
-        String EMAIL
-        String PHONE
-        Int USER_STATUS
-        String USR_PASS
-        DateTime UPDATED_DATE_TIME
+        -Int id
+        -String FIRST_NAME
+        -String LAST_NAME
+        -Int ROLE_ID
+        -String EMAIL
+        -String PHONE
+        -Int USER_STATUS
+        -String USR_PASS
+        -DateTime UPDATED_DATE_TIME
     }
     class TEST_LOOKUP{
-        int id
-        String DESCRIPTION
-        int TYP_ID
-        dateFormat UPDATED_DATE_TIME
+        -Int ID 
+        -String TITLE
+        -String DESCRIPTION
+        -Int TYP_ID
+        -DateTime UPDATED_DATE_TIME
     }
     class TEST_TYPE{
-      Int id
-      String DESCRIPTION
-      Int POINTS
-      DateTime UPDATED_DATE_TIME
+      -Int ID 
+      -String DESCRIPTION
+      -Int POINTS
+      -DateTime UPDATED_DATE_TIME
     }
     class QUESTIONS_LOOKUP{
-        int id
-        String DESCRIPTIO
-        int Time
-        Int POINTS
-        dateFormat UPDATED_DATE_TIME
+        -Int id
+        -String DESCRIPTIO
+        -Int Time
+        -Int POINTS
+        -DateTime UPDATED_DATE_TIME
     }
 
     class QUESTIONS{
-        int id
-        String QUESTION
-        String OPTIONS
-        String ANSWER
-        int ID_LOOKUP
-        int TEST_LOOKUP_ID
-        dateFormat UPDATED_DATE_TIME
+        -Int id
+        -String QUESTION
+        -String OPTIONS
+        -String ANSWER
+        -Int ID_LOOKUP
+        -Int TEST_LOOKUP_ID
+        -DateTime UPDATED_DATE_TIME
     }
     class ANSWERS{
-        Int id
-        Int Q_ID
-        Int USR_ID
-        Boolean ISTAKEN
-        String ANSR
-        DateTime UPDATED_DATE_TIME
+       -Int id
+       -Int Q_ID
+    -Int USR_ID
+    -Boolean ISTAKEN
+    -String ANSR
+    -DateTime UPDATED_DATE_TIME
     }
 class ROLES{
-    int id
-    String DESCRIPTION
-    String SHORT_DESC
-    dateFormat UPDATED_DATE_TIME
+     
+    -Int id
+    -String DESCRIPTION
+    -String SHORT_DESC
+    -DateTime UPDATED_DATE_TIME
 }
 
 class USERSTATUS{
-    int id
-    String DESCRIPTION 
-    dateFormat UPDATED_DATE_TIME
+    -Int id
+    -String DESCRIPTION 
+    -DateTime UPDATED_DATE_TIME
 }
 
 class COMPANY_PROFILE{
-    int id
-    String COMPANY_NAME 
-    Boolean ISPRODUCT_BASED
-    dateFormat UPDATED_DATE_TIME
+     _Int id
+    -String COMPANY_NAME 
+    -Boolean ISPRODUCT_BASED
+    -DateTime UPDATED_DATE_TIME
 }
 
 class USR_WORK_PROFILE{
-    int id
-    int C_ID
-    Boolean ISPRODUCT_BASED
-    dateFormat DURATION_FROM
-    dateFormat DURATION_TO
-    int CURRENT_CTC
-    int EXPECTED_CTC
-    dateFormat UPDATED_DATE_TIME
-    int USR_ID
+     -Int id
+    -Int C_ID
+    -DateTime DURATION_FROM
+    -DateTime DURATION_TO
+    -Int CURRENT_CTC
+    -Int EXPECTED_CTC
+    -DateTime UPDATED_DATE_TIME
+    -Int USR_ID
 }
 
 Users "1" --> "1..*"  ANSWERS :USR_ID
