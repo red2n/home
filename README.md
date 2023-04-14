@@ -97,7 +97,7 @@ flowchart TD
     C -->|Type 3| F[fa:fa-file-excel Reports]
 ```
 
-### Class/Table Diagram
+### SQL Table Diagram
 
 ```mermaid
 classDiagram
@@ -189,6 +189,8 @@ TEST_TYPE "1" --> "1..*" TEST_LOOKUP :TYP_ID
 COMPANY_PROFILE "1" --> "1..*"  USR_WORK_PROFILE :C_ID
 USR_WORK_PROFILE "1" --> "1..*" Users :USR_ID
 ```
+
+### Class Diagram
 
 
 ## REFERENCS
