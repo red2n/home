@@ -268,15 +268,15 @@ class COMPANY_PROFILE{
 }
 
 class USR_WORK_PROFILE{
-     -int id
-    -int C_ID
-    -Boolean ISPRODUCT_BASED
-    -dateFormat DURATION_FROM
-    -dateFormat DURATION_TO
-    -int CURRENT_CTC
-    -int EXPECTED_CTC
-    -dateFormat UPDATED_DATE_TIME
-    -int USR_ID
+    int id
+    int C_ID
+    Boolean ISPRODUCT_BASED
+    dateFormat DURATION_FROM
+    dateFormat DURATION_TO
+    int CURRENT_CTC
+    int EXPECTED_CTC
+    dateFormat UPDATED_DATE_TIME
+    int USR_ID
 }
 
 Users "1" --> "1..*"  ANSWERS :USR_ID
