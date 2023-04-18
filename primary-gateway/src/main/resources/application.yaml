@@ -1,0 +1,10 @@
+server:
+  port: 9000
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: primary-gateway-users
+          uri: http://httpbin.org/
+          predicates:
+            - Path=uuid

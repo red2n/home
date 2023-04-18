@@ -10,4 +10,6 @@ public class EdgePrimaryGatewayApplication {
 		SpringApplication.run(EdgePrimaryGatewayApplication.class, args);
 	}
 
+
 }
+
