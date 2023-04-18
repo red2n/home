@@ -45,6 +45,7 @@ We will be using JAVA for the API part, PostgreSQL for the data base and UI will
 2. Microservices with Spring Boot[^3].
 3. Kafka (in possible areas)[^3].
 4. UI Angular[^4]
+5. Icons [^9]
 
 This application will be having only one end point based on spring colud gateway. and we will be having a multiple microservices based on the need. also the will have multiple apps for each users. here is the highlevel overview of the application that will make you understand under the hood.
 
@@ -310,5 +311,6 @@ you will see more and more changes in this application in comming months or may 
 [^6]: I am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project. also there is a 
 [USAGE LINK](https://mermaid.live/edit#pako:eNplj70KwzAMhF9FaM5SShevLXTKlDWLiEXitraCIxNCyLvXzQ-0VJO573Qnz9iIZTT4kBQDT3WAPOr0xVBOMEp8utCCpZ0M3KiTAHcBlRVvOkBJTwZlMnAxUPIhZ2PqByUXBwPnb3Lb9g2cPmoBV9K_jk78d5KVMRxZPy2V0xXuFVig5-jJ2fyz-WOqUTvOWWjy01I-G-uwZB8llWoKDRqNiQtMvSXlm6M2kt_E5Q2_KVsO) that shows how to use code this and use it in [github](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams). also will take a look at the https://kroki.io/
 [^7]: I have got the reference video regarding [GitHub Actions](https://www.youtube.com/watch?v=qy_HaIaNbkE)
+[^8]: I will be using the [heroicons](https://heroicons.com/)
 [^note]:
      I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
