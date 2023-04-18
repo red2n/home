@@ -45,7 +45,7 @@ We will be using JAVA for the API part, PostgreSQL for the data base and UI will
 2. Microservices with Spring Boot[^3].
 3. Kafka (in possible areas)[^3].
 4. UI Angular[^4]
-5. Icons [^9]
+5. Icons [^8]
 
 This application will be having only one end point based on spring colud gateway. and we will be having a multiple microservices based on the need. also the will have multiple apps for each users. here is the highlevel overview of the application that will make you understand under the hood.
 
