@@ -1,0 +1,11 @@
+docker run -d -p 5432:5432 --name home-db -e POSTGRES_PASSWORD=Mypassword postgres
+
+data base server : homebase
+
+POSTGRES master passowrd:Mypassword
+
+
+docker exec -it home-db bash
+
+
+psql -h localhost -p 5432 -U postgres -W
