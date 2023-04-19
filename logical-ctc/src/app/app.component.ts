@@ -1,15 +1,26 @@
 import { Component } from '@angular/core';
-import { style, transition, trigger, animate, state } from '@angular/animations';
+import { style, transition, trigger, animate, state, keyframes } from '@angular/animations';
 
 export const fadeInOut = trigger('fadeInOut', [
   state(
     'in',
     style({
+      opacity: 0,
+      transform: 'translate-x-full'
+    })
+  ), state(
+    'out',
+    style({
       opacity: 100,
+      transform: 'translate-x-0'
     })
   ),
-  transition('void => *', [style({ opacity: 5 }), animate(500, style({ opacity: 5,  }))]),
-  transition('* => void', [animate('100ms', style({ opacity: 0 })), style({ opacity: 0 })]),
+  transition('void => *', animate('500ms',
+    style({ opacity: 100 }))
+  ),
+  transition('* => void', animate('500ms',
+  style({ opacity: 0 }))
+),
 ]);
 
 @Component({
