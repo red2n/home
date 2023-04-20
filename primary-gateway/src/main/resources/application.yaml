@@ -5,6 +5,6 @@ spring:
     gateway:
       routes:
         - id: primary-gateway-users
-          uri: http://httpbin.org/
+          uri: http://localhost:7000
           predicates:
-            - Path=uuid
+            - Path=/api/v1/users/**
