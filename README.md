@@ -300,7 +300,9 @@ USR_WORK_PROFILE "1" --> "1..*" Users :USR_ID
 3. [Flow diagram fonts](https://fontawesome.com/v4/icons/)
 4. for Writing mathematical expressions will be using [mathjax](https://www.mathjax.org/)
 5. Automate CI/CD workflows with GitHub Actions[^7].
-
+6. https://stackoverflow.com/questions/62990471/wikidata-query-to-get-country-synonyms-but-not-flag-symbols 
+7. https://en.wikipedia.org/w/api.php
+8. https://w.wiki/XWh
 
 you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
 
