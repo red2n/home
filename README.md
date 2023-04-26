@@ -1,8 +1,5 @@
 ## Project Title: Automated System for Interview Candidate Assessment and Salary Determination
 
-<a href="https://app.daily.dev/navinkumar"><img src="https://api.daily.dev/devcards/d8183c403eb64d5b8630f8021419f683.png?r=oul" width="400" alt="NavinKumar K Subramanian's Dev Card"/></a>
-
-
 ### Introduction:
 The traditional method of interviewing candidates and determining their salary through face-to-face interviews has several drawbacks. It is time-consuming, prone to bias, and lacks objective data analysis. An automated system for candidate assessment and salary determination can help eliminate these problems.
 
