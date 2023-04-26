@@ -75,7 +75,49 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/api/v1/users?id=1",
+					"raw": "http://localhost:7000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Gateway USERS",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9000/api/v1/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user-profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/user-profile",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -84,13 +126,7 @@
 					"path": [
 						"api",
 						"v1",
-						"users"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
+						"user-profile"
 					]
 				}
 			},
@@ -202,21 +238,6 @@
 			"response": []
 		}
 	],
-	"auth": {
-		"type": "basic",
-		"basic": [
-			{
-				"key": "password",
-				"value": "7a0d1c14-2980-4ff7-a221-2bfaa6e4fd30",
-				"type": "string"
-			},
-			{
-				"key": "username",
-				"value": "user",
-				"type": "string"
-			}
-		]
-	},
 	"event": [
 		{
 			"listen": "prerequest",
