@@ -303,6 +303,7 @@ USR_WORK_PROFILE "1" --> "1..*" Users :USR_ID
 6. https://stackoverflow.com/questions/62990471/wikidata-query-to-get-country-synonyms-but-not-flag-symbols 
 7. https://en.wikipedia.org/w/api.php
 8. https://w.wiki/XWh
+9. https://hotpot.ai/free-icons
 
 you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
 
