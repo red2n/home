@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.beyondctc</groupId>
+    <artifactId>app</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Beyond CTC Application</name>
+    <description>This Application is to learn latest and greatest technologies in the JAVA/Spring boot.</description>
+    <packaging>pom</packaging>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <modules>
+        <module>gateway</module>
+        <module>configuration</module>
+        <module>discovery</module>
+        <module>user-api</module>
+<!--        <module>service-discovery</module>-->
+<!--        <module>service-mails</module>-->
+<!--        <module>service-prices</module>-->
+<!--        <module>service-users</module>-->
+    </modules>
+
+</project>
