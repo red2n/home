@@ -1,4 +1,6 @@
 docker run -d -p 5432:5432 --name home-db -e POSTGRES_PASSWORD=Mypassword postgres
+docker run --name home-db -e POSTGRES_PASSWORD=Mypassword -e POSTGRES_USER=postgres -e POSTGRES_DB=homebase -p 5432:5432 -d postgres
+
 
 data base server : homebase
 
@@ -9,3 +11,8 @@ docker exec -it home-db bash
 
 
 psql -h localhost -p 5432 -U postgres -W
+
+
+https://www.tutorialspoint.com/postgresql/postgresql_create_database.htm
+
+postgres=# CREATE DATABASE homebase;
