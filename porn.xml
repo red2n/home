@@ -18,7 +18,7 @@
         <module>configuration</module>
         <module>discovery</module>
         <module>user-api</module>
-<!--        <module>service-discovery</module>-->
+        <module>qanda-api</module>
 <!--        <module>service-mails</module>-->
 <!--        <module>service-prices</module>-->
 <!--        <module>service-users</module>-->
