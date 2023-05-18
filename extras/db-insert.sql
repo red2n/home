@@ -62,57 +62,65 @@ $$ LANGUAGE plpgsql;
 
 -- INSERT USERSTATUS
 TRUNCATE TABLE USERSTATUS;
-INSERT INTO USERSTATUS (DESCRIPTION)
-VALUES ('Active'),
- ('In-Active'),
- ('Locked');
+INSERT INTO USERSTATUS (STATUS_ID,DESCRIPTION)
+VALUES (100,'Active'),
+ (1000,'In-Active'),
+ (1001,'Locked');
 SELECT * FROM USERSTATUS;
-
---- INSERT USERS
-TRUNCATE TABLE USERS;
-INSERT INTO USERS (FIRST_NAME,LAST_NAME,EMAIL,PHONE,USER_STATUS)
-VALUES ('navin','nkumar','ksnavinkumar.diary@gmail.com','+9751449866',1),
-('Dhanvika','Navin','d@d.com','+9456449866',1),
-('Suga','Priya','sugi.mib@gmail.com','+9751449858',2),
-('Subramanian','rangasamy','R@R.com','+91994214881',3);
-SELECT * FROM USERS;
 
 --- INSERT PERMISSIONS_LOOKUP
 TRUNCATE TABLE PERMISSIONS_LOOKUP;
 INSERT INTO PERMISSIONS_LOOKUP (PERM_ID,DESCRIPTION,SHORT_DESC)
-VALUES (123731,'Create','CRE'), 
-(200200,'Edit','EDT'),
-(323931,'Preview And Comment','CMT'),
-(524131,'Delete','DEL');
+VALUES(100,'View Only','VIW'), 
+(1000,'Create','CRE'), 
+(1001,'Edit','EDT'),
+(1002,'Preview And Comment','CMT'),
+(1003,'Delete','DEL');
 SELECT * FROM PERMISSIONS_LOOKUP;
 
 --INSERT ACCESS_GROUP
 TRUNCATE TABLE ACCESS_GROUP;
-INSERT INTO ACCESS_GROUP (SCREEN_ID,CHILD_SCREEN_ID,DESCRIPTION,ROUTES,MAP_ROUTE)
-VALUES (100,0,'Home/Welcome Screen','//Home','//Home'),
-(1000,0,'Dashboard','//dashboard','//dashboard'),
+INSERT INTO ACCESS_GROUP (ACCESS_ID,PARENT_ID,DESCRIPTION,ROUTES,MAP_ROUTE)
+VALUES (100,NULL,'Default User','//Home','//Home'),
+(1000,NULL,'Internal Default User','//dashboard','//dashboard'),
 (1001,1000,'Quick View','//quick-view','//quick-view'),
 (1002,1000,'Chart','//chart','//chart'),
-(1003,0,'User','//users','//users'),
+(1003,NULL,'User Access Control','//users','//users'),
 (1004,1003,'Create Screen','//create-users','//create-users'),
 (1005,1003,'Map User Group','//map-user-roup','//map-user-roup'),
-(1006,0,'Questions','//questions','//questions'),
+(1006,NULL,'Q and A Control group 1','//questions','//questions'),
 (1007,1006,'Create Screen','//create-questions','//create-questions'),
-(1008,0,'Companies','//companies','//companies'),
+(1008,NULL,'Default Companies','//companies','//companies'),
 (1009,1008,'Create Companies','//create-companies','//create-companies'),
-(1010,0,'Answers','//answers','//answers'),
+(1010,NULL,'Q and A Control group 1','//answers','//answers'),
 (1011,1010,'Create Answers','//create-answers','//create-answers');
 
 SELECT * FROM ACCESS_GROUP;
 
 ---INSERT INTO USER_GROUP
-INSERT INTO USER_GROUP(GROUP_ID,ACCESS_ID)
-VALUES(1000,100),
-VALUES(1001,1000),
-VALUES(1002,1003),
-VALUES(1003,1006),
+TRUNCATE TABLE USER_GROUP;
+INSERT INTO USER_GROUP(GROUP_ID,PARENT_ID,ACCESS_ID,PERM_ID,DESCRIPTION)
+VALUES(100,NULL,100,100,'Default'),
+(1000,NULL,NULL,NULL,'Internal default'),
+(1001,1000,100,100),
+(1002,1000,1000,100),
+(1003,NULL,NULL,NULL,'User Access Group'),
+(1004,1003,1003,1000),
+(1005,NULL,NULL,NULL,'Super User Group'),
+(1006,1005,1006,1000);
+
+--- INSERT USERS
+TRUNCATE TABLE USERS;
+INSERT INTO USERS (FIRST_NAME,LAST_NAME,EMAIL,PHONE,USER_STATUS,GROUP_ID)
+VALUES ('Guest','guest','guest.noreply@gmail.com','+987654321',100,100),
+('navin','nkumar','ksnavinkumar.diary@gmail.com','+9751449866',100,100),
+('Dhanvika','Navin','d@d.com','+9456449866',100,1000),
+('Suga','Priya','sugi.mib@gmail.com','+9751449858',1000,1000),
+('Subramanian','rangasamy','R@R.com','+91994214881',1000,1000);
+SELECT * FROM USERS;
 
 -- INSERT COMPANY_PROFILE
+TRUNCATE TABLE COMPANY_PROFILE;
 INSERT INTO COMPANY_PROFILE (COMPANY_NAME,ISPRODUCT_BASED)
 VALUES ('Microsoft India', TRUE),
 ('SAP Labs India', TRUE),
@@ -137,6 +145,7 @@ VALUES ('Microsoft India', TRUE),
 SELECT * FROM COMPANY_PROFILE;
 
 --INSERT USR_WORK_PROFILE
+TRUNCATE TABLE USR_WORK_PROFILE;
 INSERT INTO USR_WORK_PROFILE (C_ID,CURRENT_CTC,EXPECTED_CTC,USR_ID)
 VALUES (1,10000,50000,1),
 (3,600000,700000,2),
@@ -146,7 +155,6 @@ SELECT * FROM USR_WORK_PROFILE;
 
 --INSERT QUESTIONS_LOOKUP
 TRUNCATE TABLE QUESTIONS_LOOKUP;
-
 INSERT INTO QUESTIONS_LOOKUP(DESCRIPTION,POINTS)
 VALUES ('Multiple Option',10),
 ('Demo Questions',1),
@@ -156,6 +164,7 @@ VALUES ('Multiple Option',10),
 SELECT * FROM QUESTIONS_LOOKUP;
 
 ---INSERT INTO TEST_TYPE
+TRUNCATE TABLE TEST_TYPE;
 INSERT INTO TEST_TYPE(DESCRIPTION,POINTS)
 VALUES ('Cognitive Ability',20),
 ('Language',20),
@@ -167,6 +176,7 @@ VALUES ('Cognitive Ability',20),
 SELECT * FROM TEST_TYPE;
 
 ---INSERT INTO TEST_LOOKUP
+TRUNCATE TABLE TEST_LOOKUP;
 INSERT INTO TEST_LOOKUP(TITLE,DESCRIPTION,TYP_ID)
 VALUES ('Mechanical reasoning',
 		'This mechanical reasoning test evaluates candidates’ understanding of basic mechanical and physical concepts. This test helps you identify individuals with good mechanical reasoning skills who can apply mechanical principles to solve problems.',
@@ -222,7 +232,6 @@ SELECT * FROM TEST_LOOKUP;
 
 ---INSERT INTO QUESTIONS 
 TRUNCATE TABLE QUESTIONS;
-
 INSERT INTO QUESTIONS (QUESTION,OPTIONS,ANSWER,ID_LOOKUP,TEST_LOOKUP_ID)
 VALUES ('What is the difference between a stack and a queue?',
 		'A) A stack is a Last-In-First-Out (LIFO) data structure, while a queue is a First-In-First-Out (FIFO) data structure.

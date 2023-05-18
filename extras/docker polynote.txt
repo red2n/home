@@ -1,0 +1,1 @@
+docker run -it --rm -p 8192:8192 -v W:\homeproject\home\extras\:/opt/polynote/notebooks polynote/polynote
