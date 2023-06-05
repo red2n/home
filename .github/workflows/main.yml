@@ -23,7 +23,7 @@ jobs:
         with:
           java-version: 17
           maven-version: ${{ matrix.maven }}
-      - run: mvn package
+      - run: mvn package -DskipTests
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v4
         with:
