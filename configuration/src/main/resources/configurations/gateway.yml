@@ -16,14 +16,14 @@ spring:
           uri: http://httpbin.org/
           predicates:
             - Path=/uuid
-#        - id: students
-#          uri: http://localhost:8090
-#          predicates:
-#            - Path=/api/v1/students/**
-#        - id: schools
-#          uri: http://localhost:8070
-#          predicates:
-#            - Path=/api/v1/schools/**
+        - id: users
+          uri: http://localhost:8090/
+          predicates:
+            - Path=/api/v1/users/**
+        - id: access
+          uri: http://localhost:8090/
+          predicates:
+            - Path=/api/v1/access/**
 
 management:
   tracing:
