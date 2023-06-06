@@ -14,9 +14,9 @@
     </properties>
 
     <modules>
-        <module>gateway</module>
         <module>configuration</module>
         <module>discovery</module>
+        <module>gateway</module>
         <module>user-api</module>
         <module>qanda-api</module>
     </modules>
