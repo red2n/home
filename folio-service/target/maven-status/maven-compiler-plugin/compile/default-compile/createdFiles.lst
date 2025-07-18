@@ -1,0 +1,11 @@
+net/navinkumar/folio/entity/Folio.class
+net/navinkumar/folio/dto/FolioChargeRequest.class
+net/navinkumar/folio/service/FolioService.class
+net/navinkumar/folio/dto/FolioRequest.class
+net/navinkumar/folio/controller/FolioController.class
+net/navinkumar/folio/FolioServiceApplication.class
+net/navinkumar/folio/repository/FolioChargeRepository.class
+net/navinkumar/folio/entity/Folio$FolioStatus.class
+net/navinkumar/folio/entity/FolioCharge$ChargeType.class
+net/navinkumar/folio/entity/FolioCharge.class
+net/navinkumar/folio/repository/FolioRepository.class
