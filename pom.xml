@@ -18,6 +18,8 @@
         <module>discovery</module>
         <module>gateway</module>
         <module>usermanagement</module>
+        <module>channel-management</module>
+        <module>integration-service</module>
     </modules>
 
 </project>

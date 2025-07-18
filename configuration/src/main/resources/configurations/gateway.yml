@@ -24,6 +24,14 @@ spring:
           uri: http://localhost:8090/
           predicates:
             - Path=/api/v1/access/**
+        - id: channel-management
+          uri: lb://channel-management
+          predicates:
+            - Path=/api/channels/**
+        - id: integration-service
+          uri: lb://integration-service
+          predicates:
+            - Path=/api/integrations/**
 
 management:
   tracing:
