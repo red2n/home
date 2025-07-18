@@ -357,10 +357,10 @@ The database design will follow a hybrid approach:
 - Basic Guest Management
 - Simple Booking Engine
 ### 10.2 Phase 2: Financial Operations
-- Folio Management
-- Payment Processing
-- Ledger System
-- Basic Reporting
+- Folio Management Service (Port 8083)
+- Payment Processing Service (Port 8084)
+- Ledger System Service (Port 8085)
+- Integration with existing infrastructure
 ### 10.3 Phase 3: Advanced Features
 - Rate Management
 - Offer System with Approvals
@@ -371,18 +371,42 @@ The database design will follow a hybrid approach:
 - Payment Gateway Integration
 - Accounting System Integration
 - Mobile Applications
-## 11. Monitoring & Operations
-### 11.1 System Monitoring
+## 12. Implemented Services
+
+### 12.1 Phase 1: Core Foundation (Completed)
+- **Configuration Service** (Port 8888) - Spring Cloud Config Server
+- **Discovery Service** (Port 8761) - Eureka Service Registry
+- **API Gateway** (Port 8080) - Spring Cloud Gateway
+- **User Management Service** - Identity and access management
+
+### 12.2 Phase 2: Financial Operations (Completed)
+- **Folio Service** (Port 8083) - Guest bill management, charge posting, split folio handling
+- **Payment Service** (Port 8084) - Payment processing, refunds, gateway integration
+- **Ledger Service** (Port 8085) - Double-entry accounting, journal entries, balance calculations
+
+### 12.3 Service Endpoints
+| Service | Port | Health Check | Base API |
+|---------|------|--------------|----------|
+| Configuration | 8888 | `/actuator/health` | `/config` |
+| Discovery | 8761 | `/actuator/health` | `/eureka` |
+| Gateway | 8080 | `/actuator/health` | `/api` |
+| User Management | 8082 | `/actuator/health` | `/api/users` |
+| Folio Service | 8083 | `/actuator/health` | `/api/folios` |
+| Payment Service | 8084 | `/actuator/health` | `/api/payments` |
+| Ledger Service | 8085 | `/actuator/health` | `/api/ledger` |
+
+## 13. Monitoring & Operations
+### 13.1 System Monitoring
 - Service health metrics
 - Performance monitoring
 - Error tracking and alerting
 - SLA monitoring
-### 11.2 Business Monitoring
+### 13.2 Business Monitoring
 - Booking pace tracking
 - Revenue monitoring
 - Occupancy metrics
 - User activity analytics
-### 11.3 DevOps Practices
+### 13.3 DevOps Practices
 - Automated testing
 - Continuous integration
 - Continuous deployment
