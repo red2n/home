@@ -1,0 +1,12 @@
+net/navinkumar/usermanagement/package-info.class
+net/navinkumar/usermanagement/entity/User.class
+net/navinkumar/usermanagement/repository/UserRepository.class
+net/navinkumar/usermanagement/entity/Role.class
+net/navinkumar/usermanagement/UserManagement.class
+net/navinkumar/usermanagement/repository/DepartmentPermissionRepository.class
+net/navinkumar/usermanagement/entity/DepartmentPermission.class
+net/navinkumar/usermanagement/service/DepartmentPermissionService.class
+net/navinkumar/usermanagement/entity/Department.class
+net/navinkumar/usermanagement/repository/DepartmentRepository.class
+net/navinkumar/usermanagement/entity/Permission.class
+net/navinkumar/usermanagement/controller/DepartmentController.class

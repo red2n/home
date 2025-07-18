@@ -1,0 +1,12 @@
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/entity/Permission.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/entity/DepartmentPermission.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/repository/DepartmentPermissionRepository.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/repository/UserRepository.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/service/DepartmentPermissionService.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/entity/Department.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/repository/DepartmentRepository.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/controller/DepartmentController.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/entity/Role.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/entity/User.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/UserManagement.java
+/home/runner/work/home/home/usermanagement/src/main/java/net/navinkumar/usermanagement/package-info.java
