@@ -1,346 +1,389 @@
-## Project Title: Automated System for Interview Candidate Assessment and Salary Determination
+## Property Management System (PMS)
 
-### Introduction:
-The traditional method of interviewing candidates and determining their salary through face-to-face interviews has several drawbacks. It is time-consuming, prone to bias, and lacks objective data analysis. An automated system for candidate assessment and salary determination can help eliminate these problems.
+## 1. System Architecture Overview
+1. System Architecture Overview
+Based on the UML model we've developed, I propose a modern, cloud-native, microservices-based architecture for the PMS. This approach will allow for better scalability, maintainability, and the ability to deploy updates to individual components without affecting the entire system.
 
-### Project Goals:
-The goal of this project is to develop an automated system that can assess candidates' skills and qualifications and determine their salary based on objective data analysis. This system will provide a fair and unbiased evaluation of candidates and their skills, enabling organizations to make informed decisions on hiring and compensation.
-
-### Drawbacks of Traditional Face-to-Face Interview Process in Salary Determination:
-The traditional face-to-face interview process has several drawbacks when it comes to determining a candidate's salary. Some of these drawbacks are:
-
-### Subjectivity: 
-The interviewers' biases can affect the candidate's evaluation and salary determination.
-
-### Time-consuming: 
-Conducting face-to-face interviews for every candidate is a time-consuming process.
-
-### Lack of data: 
-The evaluation is subjective, and there is no objective data to support the decision.
-
-### Inconsistency: 
-The evaluation criteria may not be consistent across different interviewers.
-
-### Advantages of the Automated System over Competitors:
-The automated system has several advantages over its competitors, some of which are:
-
-Objective data analysis: 
-The system uses data to evaluate the candidate's skills and qualifications, eliminating subjectivity.
-
-### Time-saving: 
-The system can evaluate candidates quickly, reducing the time required for the evaluation process.
-
-### Consistency: 
-The system uses consistent evaluation criteria, ensuring that all candidates are evaluated fairly.
-
-### Elimination of Bias: 
-The system's objective evaluation eliminates any biases that may exist in the face-to-face interview process.
-
-### Accurate Salary Determination: 
-The system uses objective data analysis to determine a candidate's salary, ensuring that it is fair and consistent with industry standards.
-
-## Application Overview
-We will be using JAVA for the API part, PostgreSQL for the data base and UI will be in latest Angular framework (Tailwind[^1] CSS as CSS framework). also here are some references that i will be using to build this application and the techniques that will be involved in developing this application.
-1. Spring Cloud Gateway[^2].
-2. Microservices with Spring Boot[^3].
-3. Kafka (in possible areas)[^3].
-4. UI Angular[^4]
-5. Icons [^8]
-6. Provenance[^9]
-
-This application will be having only one end point based on spring colud gateway. and we will be having a multiple microservices based on the need. also the will have multiple apps for each users. here is the highlevel overview of the application that will make you understand under the hood.
-
-API endpoint.
-1. Users/Roles
-2. Questions
-3. Answers
-4. Company Profile[^5]
-5. Canditate Profile.
-6. Report
-
-UI/APP
-1. Home/Welcome App.
-2. Admin App.
-3. Internal user App.
-4. Canditate Home App.
-5. Reports App.
-
-## Application Flow
-
-### Task Lists
-- [x] Creating Git Report and adding README.
-- [ ] Linking [Flow Diagram](https://www.mermaidchart.com/). [^6]
-     - [ ] Creating the `System Design`.
-          - [ ] overview of the system
-          - [ ] control flow overview
-               - [ ] App System Design
-                    - [ ] Home
-                    - [x] Admin
-                    - [ ] Internal User 
-                    - [ ] Canditate User
-                    - [ ] Report App
-          
-- [ ] Get the pre-requsits done
-     - [ ] Install PostgreSQL in the local machine and configure the DB.
-     - [ ] Create the necessary tables.
-     - [ ] Create the necessary View.
-     - [ ] load the tables with sample data.
-     - [ ] implement logging ability in the database.
-
-
-### Sample system flow (Admin app)
-
-```mermaid
-flowchart TD
-    A[Admin] -->B(Access Request)
-    B --> C{check for valid user}
-    C -->|Type 1| D[fa:fa-user Internal User]
-    C -->|Type 2| E[fa:fa-users Canditate]
-    C -->|Type 3| F[fa:fa-file-excel Reports]
+### 1.1 High-Level Architecture
+```
+┌─────────────────────────────────────────────────────────────┐
+│                       Client Applications                    │
+│  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────┐  │
+│  │   Web     │  │  Mobile   │  │Self-Service│  │  Partner  │  │
+│  │   App     │  │   App     │  │   Kiosk   │  │   APIs    │  │
+│  └───────────┘  └───────────┘  └───────────┘  └───────────┘  │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────┐
+│                         API Gateway                          │
+│  ┌───────────────────────────────────────────────────────┐  │
+│  │   Authentication   │   Rate Limiting   │   Routing    │  │
+│  └───────────────────────────────────────────────────────┘  │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+┌───────────────────────────▼─────────────────────────────────┐
+│                    Service Mesh / Message Bus                │
+└───────────┬────────────┬────────────┬────────────┬──────────┘
+            │            │            │            │
+┌───────────▼───┐ ┌──────▼───────┐ ┌──▼───────────┐ ┌─────▼────────┐
+│  Core Services │ │Guest Services│ │Booking Engine│ │Financial Svcs│
+└───────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
+            │            │            │            │
+┌───────────▼───┐ ┌──────▼───────┐ ┌──▼───────────┐ ┌─────▼────────┐
+│ Inventory Mgmt │ │Rate & Offers │ │Communications│ │ Reporting    │
+└───────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
+            │            │            │            │
+┌───────────▼───┐ ┌──────▼───────┐ ┌──▼───────────┐ ┌─────▼────────┐
+│  Integration   │ │ Audit System │ │  Tax Engine  │ │Housekeeping  │
+└───────────────┘ └──────────────┘ └──────────────┘ └──────────────┘
+            │            │            │            │
+┌───────────▼────────────▼────────────▼────────────▼──────────────┐
+│                        Data Services Layer                       │
+│  ┌────────────┐  ┌────────────┐  ┌────────────┐  ┌────────────┐  │
+│  │ Relational │  │ Document   │  │ Cache      │  │ Search     │  │
+│  │ Database   │  │ Store      │  │ Service    │  │ Engine     │  │
+│  └────────────┘  └────────────┘  └────────────┘  └────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
 ```
 
-### SQL Table Diagram
+## 2. Technology Stack Recommendations
 
-```mermaid
-erDiagram
+### 2.1 Backend Services
+- Programming Language: Java/Spring Boot for core services, Node.js for lightweight services
+API Design: REST for synchronous operations, gRPC for service-to-service communication
+- Message Broker: Apache Kafka for event streaming
+- Service Mesh: Istio for service discovery, load balancing, and circuit breaking
+### 2.2 Data Persistence
+- Primary Database: PostgreSQL for relational data (transactions, bookings, financial records)
+- Document Store: MongoDB for flexible schemas (guest preferences, reporting data)
+- Cache: Redis for session management and frequently accessed data
+- Search: Elasticsearch for advanced search capabilities across inventory and guest data
+### 2.3 Frontend
+- Web Application: React.js with TypeScript for staff portal
+- Mobile Applications: React Native for cross-platform mobile support
+- Design System: Custom component library with consistent styling
+### 2.4 DevOps & Infrastructure
+- Containerization: Docker
+- Orchestration: Kubernetes
+- CI/CD: Jenkins or GitHub Actions
+- Monitoring: Prometheus, Grafana, and ELK stack
+- Cloud Provider: AWS or Azure
 
-TEST_TYPE ||--o{ TEST_LOOKUP : TYP_ID
-TEST_TYPE{
-      SERIAL ID 
-      TEXT DESCRIPTION
-      INT POINTS
-      TIMESTAMP UPDATED_DATE_TIME
-    }
-TEST_LOOKUP ||--o{ QUESTIONS : TEST_LOOKUP_ID
- TEST_LOOKUP{
-        SERIAL ID 
-        VARCHAR TITLE
-        TEXT DESCRIPTION
-        INT TYP_ID
-        TIMESTAMP UPDATED_DATE_TIME
-    }
-QUESTIONS_LOOKUP ||--o{ QUESTIONS : ID_LOOKUP
-QUESTIONS_LOOKUP{
-        SERIAL id
-        VARCHAR DESCRIPTIO
-        INT Time
-        INT POINTS
-        TIMESTAMP UPDATED_DATE_TIME
-    }
-QUESTIONS ||--o{ ANSWERS : Q_ID
- QUESTIONS{
-        SERIAL id
-        TEXT QUESTION
-        TEXT OPTIONS
-        TEXT ANSWER
-        INT ID_LOOKUP
-        INT TEST_LOOKUP_ID
-        TIMESTAMP UPDATED_DATE_TIME
-    }
+## 3. Microservices Breakdown
+Based on the UML model, the system will be organized into the following microservices:
 
+### 3.1 Core Services
+#### 3.1.1 Identity & Access Management Service
+- User authentication and authorization
+- Role-based access control
+- Department management
+- Session management
+- Integration with SSO providers
+#### 3.1.2 Property Configuration Service
+- Property management
+- Property type configuration
+- Global settings management
+### 3.2 Inventory Management
+#### 3.2.1 Room Inventory Service
+- Room type management
+- Room status tracking
+- Amenity management
+- Room availability calendar
+#### 3.2.2 Housekeeping Service
+- Task assignment and scheduling
+- Room status updates
+- Maintenance request handling
+- Mobile app integration for housekeeping staff
+### 3.3 Guest Services
+#### 3.3.1 Guest Profile Service
+- Guest data management
+- Preferences tracking
+- Profile merging and deduplication
+- GDPR compliance tools
+#### 3.3.2 Loyalty Service
+- Points management
+- Tier calculations
+- Redemption processing
+- Partner program integration
+### 3.4 Rate Management
+#### 3.4.1 Rate Plan Service
+- Rate plan configuration
+- Seasonal rate management
+- BAR (Best Available Rate) calculations
+- Rate restrictions management
+#### 3.4.2 Package Service
+- Package creation and management
+- Add-on bundling
+- Package availability rules
+#### 3.4.3 Cancellation Policy Service
+- Policy configuration
+- Rule management
+- Fee calculation
+- Cancellation enforcement
+### 3.5 Offer Management
+#### 3.5.1 Offer Definition Service
+- Offer type management
+- Department authorization mapping
+- Offer creation and configuration
+- Approval workflow management
+#### 3.5.2 Offer Application Service
+- Offer eligibility checking
+- Discount calculation
+- Usage tracking
+- Offer selection optimization
+### 3.6 Booking Engine
+#### 3.6.1 Reservation Service
+- Booking creation and management
+- Modification handling
+- Cancellation processing
+- Room assignment
+- Channel management
+- Check-in/check-out processing
+#### 3.6.2 Availability Calculation Service
+- Real-time inventory checking
+- Rate availability
+- Restriction enforcement
+- Overbooking management
+### 3.7 Financial Services
+#### 3.7.1 Folio Management Service
+- Guest bill management
+- Charge posting
+- Split folio handling
+- Bill presentation
+#### 3.7.2 Payment Processing Service
+- Payment method handling
+- Transaction processing
+- Refund management
+- Payment gateway integration
+- Tokenization for PCI compliance
+#### 3.7.3 Ledger Service
+- Account management
+- Transaction posting
+- Balance calculations
+- Reconciliation tools
+- Fiscal period management
+#### 3.7.4 Night Audit Service
+- Daily closing procedures
+- Automatic charge posting
+- Error checking
+- Report generation
+### 3.8 Taxation
+#### 3.8.1 Tax Configuration Service
+- Tax rule management
+- Tax group configuration
+- Jurisdiction management
+#### 3.8.2 Tax Calculation Service
+- Real-time tax calculations
+- Tax exemption handling
+- Tax reporting
+### 3.9 Communications & Reporting
+#### 3.9.1 Notification Service
+- Template management
+- Multi-channel delivery (email, SMS)
+- Scheduling and triggers
+- Delivery tracking
+#### 3.9.2 Reporting Service
+- Standard report generation
+- Custom report builder
+- Data visualization
+- Export capabilities
+- Scheduled report delivery
+### 3.10 Audit & Logging
+#### 3.10.1 Audit Trail Service
+- Change tracking across all entities
+- User action logging
+- Compliance reporting
+- Data immutability
+## 4. Data Flow Diagrams
+### 4.1 Booking Creation Flow
+```
+┌──────────┐     ┌─────────────┐     ┌───────────────┐     ┌──────────────┐
+│  Client  │────▶│ Reservation │────▶│ Availability  │────▶│ Rate         │
+│  App     │     │ Service     │     │ Service       │     │ Service      │
+└──────────┘     └─────────────┘     └───────────────┘     └──────────────┘
+                        │                                          │
+                        ▼                                          ▼
+                 ┌─────────────┐                          ┌──────────────┐
+                 │ Guest       │                          │ Offer        │
+                 │ Service     │                          │ Service      │
+                 └─────────────┘                          └──────────────┘
+                        │                                          │
+                        ▼                                          ▼
+                 ┌─────────────┐     ┌───────────────┐     ┌──────────────┐
+                 │ Folio       │────▶│ Tax           │────▶│ Payment      │
+                 │ Service     │     │ Service       │     │ Service      │
+                 └─────────────┘     └───────────────┘     └──────────────┘
+                        │                                          │
+                        ▼                                          ▼
+                 ┌─────────────┐                          ┌──────────────┐
+                 │ Ledger      │                          │ Notification │
+                 │ Service     │                          │ Service      │
+                 └─────────────┘                          └──────────────┘
+                        │                                          │
+                        ▼                                          ▼
+                 ┌─────────────┐                          ┌──────────────┐
+                 │ Audit       │                          │ Inventory    │
+                 │ Service     │                          │ Service      │
+                 └─────────────┘                          └──────────────┘
+```
+### 4.2 Offer Approval Flow
+```
+┌──────────┐     ┌─────────────┐     ┌───────────────┐     
+│  Staff   │────▶│ Offer       │────▶│ Department    │     
+│  Portal  │     │ Service     │     │ Service       │     
+└──────────┘     └─────────────┘     └───────────────┘     
+                        │                    │
+                        ▼                    ▼
+                 ┌─────────────┐     ┌───────────────┐
+                 │ Notification│────▶│ Manager       │
+                 │ Service     │     │ Portal        │
+                 └─────────────┘     └───────────────┘
+                                            │
+                                            ▼
+                                     ┌───────────────┐
+                                     │ Offer         │
+                                     │ Service       │
+                                     └───────────────┘
+                                            │
+                                            ▼
+                                     ┌───────────────┐
+                                     │ Audit         │
+                                     │ Service       │
+                                     └───────────────┘
+```
+## 5. Database Schema Design
+The database design will follow a hybrid approach:
+### 5.1 Core Transactional Database (PostgreSQL)
+- Schema for each major domain (booking, guest, financial, inventory)
+- Strong referential integrity for critical financial data
+- Partitioning by property and date for performance
+### 5.2 Document Store (MongoDB)
+- Guest preferences and history
+- Flexible attributes for rooms and properties
+- Report data and templates
+### 5.3 Search Index (Elasticsearch)
+- Room and rate search
+- Guest search
+- Full-text search across documents
+### 5.4 Cache Layer (Redis)
+- Session data
+- Frequently accessed configuration
+- Rate availability cache
+- Inventory status
 
-USR_WORK_PROFILE ||--o{ Users : USR_ID
-USR_WORK_PROFILE{
-     SERIAL id
-    INT C_ID
-    DATE DURATION_FROM
-    DATE DURATION_TO
-    INT CURRENT_CTC
-    INT EXPECTED_CTC
-    TIMESTAMP UPDATED_DATE_TIME
-    INT USR_ID
-}
-COMPANY_PROFILE  ||--o{ USR_WORK_PROFILE : C_ID
-COMPANY_PROFILE{
-     SERIAL id
-    TEXT COMPANY_NAME 
-    BOOLEAN ISPRODUCT_BASED
-    TIMESTAMP UPDATED_DATE_TIME
-}
-
-PERMISSIONS_LOOKUP ||--o{ USER_GROUP : PERM_ID
-PERMISSIONS_LOOKUP{
-    SERIAL id
-    INT PERM_ID 
-    VARCHAR DESCRIPTION 
-    VARCHAR SHORT_DESC
-    TIMESTAMP UPDATED_DATE_TIME
-}
-ACCESS_GROUP ||--o{ USER_GROUP : ACCESS_ID
-ACCESS_GROUP{
-    SERIAL id
-    INT ACCESS_ID
-    INT PARENT_ID
-    VARCHAR DESCRIPTION
-    VARCHAR ROUTES
-    VARCHAR MAP_ROUTE
-    TIMESTAMP UPDATED_DATE_TIME
-}
-USER_GROUP ||--|{ Users : GROUP_ID
-USER_GROUP{
-    SERIAL id
-    INT GROUP_ID
-    INT PARENT_ID
-    INT ACCESS_ID
-    INT PERM_ID
-    VARCHAR DESCRIPTION
-    TIMESTAMP UPDATED_DATE_TIME
-}
-
-USERSTATUS ||--o{ Users : USER_STATUS
-USERSTATUS{
-    SERIAL id
-    VARCHAR DESCRIPTION 
-    TIMESTAMP UPDATED_DATE_TIME
-}
-GET_NEXT_ID{
-    INT NEXT_ID
-    VARCHAR TBL_NAME
-    VARCHAR HOLDING_PROCESS
-}
-
-Users ||--o{ ANSWERS : USR_ID
-Users {
-    SERIAL id
-    VARCHAR FIRST_NAME
-    VARCHAR LAST_NAME
-    INT GROUP_ID
-    VARCHAR EMAIL
-    VARCHAR PHONE
-    INT USER_STATUS
-    TEXT USR_PASS
-    TIMESTAMP UPDATED_DATE_TIME
-}
-
-ANSWERS {
-    SERIAL id
-    INT Q_ID
-    INT USR_ID
-    BOOLEAN ISTAKEN
-    TEXT ANSR
-    TIMESTAMP UPDATED_DATE_TIME
-}
-
+## 6. Integration Architecture
+### 6.1 External System Integration
+```
+┌─────────────────────────────────────────────────────────────┐
+│                         PMS Core                            │
+└─────────────────────────────┬───────────────────────────────┘
+                              │
+┌─────────────────────────────▼───────────────────────────────┐
+│                     Integration Layer                        │
+│  ┌────────────┐  ┌────────────┐  ┌────────────┐             │
+│  │ API        │  │ Event      │  │ File       │             │
+│  │ Gateway    │  │ Bus        │  │ Exchange   │             │
+│  └────────────┘  └────────────┘  └────────────┘             │
+└───────┬─────────────────┬──────────────────┬────────────────┘
+        │                 │                  │
+┌───────▼─────┐   ┌───────▼─────┐    ┌───────▼─────┐
+│ Channel     │   │ Payment     │    │ Accounting  │
+│ Managers    │   │ Gateways    │    │ System      │
+└─────────────┘   └─────────────┘    └─────────────┘
+        │                 │                  │
+┌───────▼─────┐   ┌───────▼─────┐    ┌───────▼─────┐
+│ OTA          │   │ CRM         │    │ Revenue     │
+│ Platforms    │   │ Systems     │    │ Management  │
+└─────────────┘   └─────────────┘    └─────────────┘
 ```
 
-### Class Diagram
-```mermaid
-classDiagram
+### 6.2 Integration Methods
+- **RESTful APIs:** For synchronous, request-response interactions
+- **Webhooks:** For external systems to notify PMS of events
+- **Message Queue:** For asynchronous, event-driven communication
+- **Batch Processing:** For high-volume data exchange during off-peak hours
 
-    class Users{
-        -Int id
-        -String FIRST_NAME
-        -String LAST_NAME
-        -Int ROLE_ID
-        -String EMAIL
-        -String PHONE
-        -Int USER_STATUS
-        -String USR_PASS
-        -DateTime UPDATED_DATE_TIME
-    }
-    class TEST_LOOKUP{
-        -Int ID 
-        -String TITLE
-        -String DESCRIPTION
-        -Int TYP_ID
-        -DateTime UPDATED_DATE_TIME
-    }
-    class TEST_TYPE{
-      -Int ID 
-      -String DESCRIPTION
-      -Int POINTS
-      -DateTime UPDATED_DATE_TIME
-    }
-    class QUESTIONS_LOOKUP{
-        -Int id
-        -String DESCRIPTIO
-        -Int Time
-        -Int POINTS
-        -DateTime UPDATED_DATE_TIME
-    }
-
-    class QUESTIONS{
-        -Int id
-        -String QUESTION
-        -String OPTIONS
-        -String ANSWER
-        -Int ID_LOOKUP
-        -Int TEST_LOOKUP_ID
-        -DateTime UPDATED_DATE_TIME
-    }
-    class ANSWERS{
-       -Int id
-       -Int Q_ID
-    -Int USR_ID
-    -Boolean ISTAKEN
-    -String ANSR
-    -DateTime UPDATED_DATE_TIME
-    }
-class ROLES{
-     
-    -Int id
-    -String DESCRIPTION
-    -String SHORT_DESC
-    -DateTime UPDATED_DATE_TIME
-}
-
-class USERSTATUS{
-    -Int id
-    -String DESCRIPTION 
-    -DateTime UPDATED_DATE_TIME
-}
-
-class COMPANY_PROFILE{
-     _Int id
-    -String COMPANY_NAME 
-    -Boolean ISPRODUCT_BASED
-    -DateTime UPDATED_DATE_TIME
-}
-
-class USR_WORK_PROFILE{
-     -Int id
-    -Int C_ID
-    -DateTime DURATION_FROM
-    -DateTime DURATION_TO
-    -Int CURRENT_CTC
-    -Int EXPECTED_CTC
-    -DateTime UPDATED_DATE_TIME
-    -Int USR_ID
-}
-
-Users "1" --> "1..*"  ANSWERS :USR_ID
-ROLES "1" --> "1..*"  Users :ROLE_ID
-USERSTATUS "1" --> "1..*" Users  :USER_STATUS
-QUESTIONS_LOOKUP "1" --> "1..*" QUESTIONS :ID_LOOKUP
-QUESTIONS "1" --> "1..*" ANSWERS :Q_ID
-TEST_LOOKUP "1" --> "1..*" QUESTIONS :TEST_LOOKUP_ID
-TEST_TYPE "1" --> "1..*" TEST_LOOKUP :TYP_ID
-COMPANY_PROFILE "1" --> "1..*"  USR_WORK_PROFILE :C_ID
-USR_WORK_PROFILE "1" --> "1..*" Users :USR_ID
-```
-
-## REFERENCS
-1. [MARKDOWN SYNTAX](https://enterprise.github.com/downloads/en/markdown-cheatsheet.pdf)
-2. [Grammar index](https://github.com/github/linguist/blob/master/vendor/README.md)
-3. [Flow diagram fonts](https://fontawesome.com/v4/icons/)
-4. for Writing mathematical expressions will be using [mathjax](https://www.mathjax.org/)
-5. Automate CI/CD workflows with GitHub Actions[^7].
-6. https://stackoverflow.com/questions/62990471/wikidata-query-to-get-country-synonyms-but-not-flag-symbols 
-7. https://en.wikipedia.org/w/api.php
-8. https://w.wiki/XWh
-9. https://hotpot.ai/free-icons
-
-you will see more and more changes in this application in comming months or may be years. i will be updating this application with the latest and greatest API and UI techenology available[^note]
-
-[^1]: Primary CSS Library is [Tamilwind](https://tailwindcss.com/).
-[^2]: Spring Cloud Gateway: Resilience, Security, and Observability w/ [Thomas Vitale](https://www.youtube.com/watch?v=UXcCHX_ymag).
-[^3]: If possible i will be using the Build Event-driven [Microservices with Spring Boot & Kafka](https://www.youtube.com/watch?v=HYBtWRPikgo);
-[^4]: I highely relay on this course by [codewithmosh](https://codewithmosh.com/p/angular-master-class).
-[^5]: This might change or will be implemented in some other end point if it makes sense.
-[^6]: I am using [mermaidchart](https://www.mermaidchart.com/) to represent all the flow diagrams in this project. also there is a 
-[USAGE LINK](https://mermaid.live/edit#pako:eNplj70KwzAMhF9FaM5SShevLXTKlDWLiEXitraCIxNCyLvXzQ-0VJO573Qnz9iIZTT4kBQDT3WAPOr0xVBOMEp8utCCpZ0M3KiTAHcBlRVvOkBJTwZlMnAxUPIhZ2PqByUXBwPnb3Lb9g2cPmoBV9K_jk78d5KVMRxZPy2V0xXuFVig5-jJ2fyz-WOqUTvOWWjy01I-G-uwZB8llWoKDRqNiQtMvSXlm6M2kt_E5Q2_KVsO) that shows how to use code this and use it in [github](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams). also will take a look at the https://kroki.io/
-[^7]: I have got the reference video regarding [GitHub Actions](https://www.youtube.com/watch?v=qy_HaIaNbkE)
-[^8]: I will be using the [heroicons](https://heroicons.com/)
-[^9]: there is plan to implement https://slsa.dev/provenance/v0.1 
-[^note]:
-     I am not sure how this application will end up and as far i am available for developement and growing myself up in the industry i will be working on thie project.
+## 7. Security Architecture
+### 7.1 Authentication & Authorization
+- OAuth 2.0 / OpenID Connect for authentication
+- JWT tokens for session management
+- Role-Based Access Control (RBAC)
+- Attribute-Based Access Control (ABAC) for fine-grained permissions
+- Department-based access restrictions
+### 7.2 Data Protection
+- Data encryption at rest
+- TLS for all communications
+- PCI DSS compliance for payment handling
+- Tokenization for sensitive data
+- Key rotation policies
+### 7.3 Audit & Compliance
+- Comprehensive audit logging
+- Immutable audit records
+- GDPR compliance tools
+- Data retention policies
+## 8. Scalability & High Availability
+### 8.1 Horizontal Scaling
+- Stateless services for easy scaling
+- Database read replicas for query scaling
+- Sharding strategy for multi-property deployments
+### 8.2 High Availability
+- Multi-AZ deployment
+- Database clustering
+- Service redundancy
+- Automated failover
+### 8.3 Disaster Recovery
+- Regular backups
+- Point-in-time recovery
+- Cross-region replication
+- Recovery time objective (RTO) and recovery point objective (RPO) definitions
+### 9. Deployment Architecture
+### 9.1 Containerization Strategy
+- Docker containers for all services
+- Kubernetes for orchestration
+- Helm charts for deployment management
+### 9.2 Environment Strategy
+- Development, Testing, Staging, and Production environments
+- Automated promotion between environments
+- Feature flags for controlled rollout
+### 9.3 Multi-Tenancy
+- Property-level isolation
+- Shared infrastructure with logical separation
+- Tenant-specific configuration
+## 10. Implementation Roadmap
+### 10.1 Phase 1: Core Foundation
+- Identity & Access Management
+- Property Configuration
+- Room Inventory
+- Basic Guest Management
+- Simple Booking Engine
+### 10.2 Phase 2: Financial Operations
+- Folio Management
+- Payment Processing
+- Ledger System
+- Basic Reporting
+### 10.3 Phase 3: Advanced Features
+- Rate Management
+- Offer System with Approvals
+- Department-based Permissions
+- Enhanced Guest CRM
+### 10.4 Phase 4: Integration & Expansion
+- Channel Management
+- Payment Gateway Integration
+- Accounting System Integration
+- Mobile Applications
+## 11. Monitoring & Operations
+### 11.1 System Monitoring
+- Service health metrics
+- Performance monitoring
+- Error tracking and alerting
+- SLA monitoring
+### 11.2 Business Monitoring
+- Booking pace tracking
+- Revenue monitoring
+- Occupancy metrics
+- User activity analytics
+### 11.3 DevOps Practices
+- Automated testing
+- Continuous integration
+- Continuous deployment
+- Infrastructure as code
